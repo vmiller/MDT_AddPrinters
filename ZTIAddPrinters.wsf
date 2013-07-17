@@ -1,0 +1,52 @@
+<job id="ZTIAddPrinters">
+<script language="VBScript" src="ZTIUtility.vbs"/>
+<script language="VBScript">
+
+Option Explicit
+
+RunNewInstance
+Class ZTIAddPrinters
+
+Function ErrorCheck(sCheckName)
+	Dim bError
+	bError = False
+	If Left(sCheckName,2) <> "\\" Then
+		bError = True
+	End If
+	If InStr(3,sCheckName,"\")=0 Then
+		bError = True
+	End If
+	ErrorCheck = bError
+End Function
+
+
+Function Main()
+	Dim iRetVal
+	Dim oShell
+
+	Set oShell = CreateObject("Shell.Application")
+
+	If Not ErrorCheck(oEnvironment.Item("PrinterConnections001")) Then
+		oShell.ShellExecute "printui.exe", "/ga " & "/n" & Chr(34)_
+		  & oEnvironment.Item("PrinterConnections001") & Chr(34) & " /q"
+	End if
+
+	If Not ErrorCheck(oEnvironment.Item("PrinterConnections002")) Then
+		oShell.ShellExecute "printui.exe", "/ga " & "/n" & Chr(34)_
+		  & oEnvironment.Item("PrinterConnections002") & Chr(34) & " /q"
+	End if
+
+	If Not ErrorCheck(oEnvironment.Item("PrinterConnections003")) Then
+		oShell.ShellExecute "printui.exe", "/ga " & "/n" & Chr(34)_
+		  & oEnvironment.Item("PrinterConnections003") & Chr(34) & " /q"
+	End if
+
+	iRetVal = SUCCESS
+ 	Main = iRetVal
+End Function
+
+End Class
+
+</script>
+</job>
+

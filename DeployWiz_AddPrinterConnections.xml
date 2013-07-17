@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+' // ***************************************************************************
+' // 
+' // Copyright (c) Microsoft Corporation.  All rights reserved.
+' // 
+' // Microsoft Deployment Toolkit Solution Accelerator
+' //
+' // File:      DeployWiz_AddPrinterConnections.xml
+' // 
+' // Version:   6.1.2373.0
+' // 
+' // Purpose:   Wizard pane for specifying list of Network Printers
+' // 
+' // ***************************************************************************
+
+-->
+<Wizard>
+  <Pane id="AddPrinterConnections" title="Printer Connections">
+    <Body><![CDATA[
+<H1>Specify printer connections to add to the computer.</H1>
+
+<p>&nbsp;</p>
+
+<table>
+	<tr valign=top>
+
+	<td width=100>
+		<img src="DeployWiz_Printer.png">
+	</td>
+
+	<td width="100%">
+		Network Printers : <br><br>
+		<input id="Printer1" name="PrinterConnections001"  size=30> <br><br>
+		<input id="Printer2" name="PrinterConnections002"  size=30> <br><br>
+		<input id="Printer3" name="PrinterConnections003"  size=30> <br><br>
+		<br>
+		Specify up to three network printers to add.  If less than three are
+		needed, leave extra fields blank (or leave all fileds blank if none 
+		are to be added).<br><br>
+		Example:   \\Server\PrinterName <br><br>
+	</td>
+
+	</tr>
+</table>
+
+			]]></Body>
+    <Condition><![CDATA[UCase(Property("SkipAddPrinters")) = "NO" and UCase(Property("DeploymentType"))<>"REPLACE" and Property("DeploymentType")<>"CUSTOM"]]></Condition>
+  </Pane>
+</Wizard>
