@@ -3,3 +3,5 @@ To use these files, copy all files into the scripts directory of your deployment
 You will also need to modify customsettings.ini as follows :
  *   Add a Custom Property like this : Properties=SkipAddPrinters
  *   Add this entry to show the wizard page : SkipAddPrinters=NO
+
+You will need to add a custom step in your task sequence to execute the ZTIAddPrinters.wsf script.  Simply add a "Run Command Line" step and set the command line to : cscript.exe %SCRIPTROOT%\ZTIAddPrinters.wsf
